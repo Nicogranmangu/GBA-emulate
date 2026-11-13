@@ -16,6 +16,8 @@
       background-color: #000000;
       overflow: hidden;
       touch-action: none;
+      -webkit-user-select: none;
+      user-select: none;
     }
     #game {
       width: 100vw;
@@ -30,16 +32,17 @@
   <script>
     window.EJS_player = "#game";
     window.EJS_core = "gba";
-    window.EJS_gameName = "Kirby";
+    window.EJS_gameName = "Kirby and the Amazing Mirror";
     window.EJS_color = "#ff66b2";
     
-    // Crucial for Chrome/Safari on iPad to prevent black screen crash
+    // Prevents iPad Chrome/WebKit from black-screening
     window.EJS_threads = false;
-    
-    // Prevents auto-starting before user tap so the Play button stays visible
     window.EJS_startOnLoaded = false;
 
+    // Exact match to your ROM filename in GitHub
     window.EJS_gameUrl = "KirbyAmazingMirror.gba";
+    
+    // Stable EmulatorJS server
     window.EJS_pathtodata = "https://emulatorjs.org";
   </script>
   <script src="https://emulatorjs.orgloader.js"></script>

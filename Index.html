@@ -1,59 +1,47 @@
 <!DOCTYPE html>
-<html lang="es">
+<html lang="en">
 <head>
   <meta charset="utf-8">
-  <!-- Bloquea el zoom accidental al pulsar botones rápido en Safari (iPad) -->
   <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
-  <title>Kirby GBA - iPad</title>
+  <title>Kirby GBA</title>
   <style>
-    /* Ajusta el juego al 100% de la pantalla y evita el desplazamiento táctil */
-    html, body {
+    * {
+      box-sizing: border-box;
       margin: 0;
       padding: 0;
-      width: 100%;
-      height: 100%;
+    }
+    html, body {
+      width: 100vw;
+      height: 100vh;
       background-color: #000000;
       overflow: hidden;
       touch-action: none;
-      -webkit-user-select: none;
-      user-select: none;
     }
     #game {
-      width: 100%;
-      height: 100%;
+      width: 100vw;
+      height: 100vh;
+      display: block;
     }
   </style>
 </head>
 <body>
-  <!-- Contenedor donde se dibuja el emulador -->
   <div id="game"></div>
 
   <script>
-    // Contenedor HTML del reproductor
     window.EJS_player = "#game";
-
-    // Núcleo de consola Game Boy Advance
     window.EJS_core = "gba";
-
-    // Nombre visible del juego
-    window.EJS_gameName = "Kirby and the Amazing Mirror";
-
-    // Color de los botones e interfaz
+    window.EJS_gameName = "Kirby";
     window.EJS_color = "#ff66b2";
+    
+    // Crucial for Chrome/Safari on iPad to prevent black screen crash
+    window.EJS_threads = false;
+    
+    // Prevents auto-starting before user tap so the Play button stays visible
+    window.EJS_startOnLoaded = false;
 
-    // Idioma de los menús
-    window.EJS_language = "es-ES";
-
-    // Ruta del archivo del juego en tu repositorio de GitHub
     window.EJS_gameUrl = "Kirby%20and%20the%20Amazing%20Mirror.gba";
-
-    // Servidor alternativo (jsDelivr) muy rápido y compatible con redes escolares/iPad
-    window.EJS_pathtodata = "https://jsdelivr.net";
+    window.EJS_pathtodata = "https://emulatorjs.org";
   </script>
-
-  <!-- Carga el motor principal del emulador -->
-  <script src="https://jsdelivr.netloader.js"></script>
+  <script src="https://emulatorjs.orgloader.js"></script>
 </body>
 </html>
-
-

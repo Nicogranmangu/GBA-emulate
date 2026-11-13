@@ -2,16 +2,21 @@
 <html lang="es">
 <head>
   <meta charset="utf-8">
-  <title>Kirby GBA</title>
+  <!-- Evita el zoom accidental al tocar rápido los botones en iPad -->
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+  <title>Kirby GBA - iPad</title>
   <style>
-    /* Ajusta el juego a toda la pantalla sin bordes */
-    body, html {
+    /* Ocupa toda la pantalla y bloquea el rebote del scroll en Safari iOS */
+    html, body {
       margin: 0;
       padding: 0;
       width: 100%;
       height: 100%;
-      background: #000;
+      background-color: #000000;
       overflow: hidden;
+      touch-action: none;
+      -webkit-user-select: none;
+      user-select: none;
     }
     #game {
       width: 100%;
@@ -21,14 +26,43 @@
 </head>
 <body>
   <div id="game"></div>
+
   <script>
+    // Contenedor del emulador
     EJS_player = "#game";
+
+    // Núcleo de Game Boy Advance
     EJS_core = "gba";
-    // Carga el archivo directamente desde la misma carpeta de GitHub
-    EJS_gameUrl = "Kirby%20and%20the%20Amazing%20Mirror.gba";
+
+    // Usa la ruta relativa exacta al archivo en tu repositorio
+    EJS_gameUrl = "./Kirby and the Amazing Mirror.gba";
+
+    // Nombre visible del juego
+    EJS_gameName = "Kirby and the Amazing Mirror";
+
+    // Ruta de los motores de EmulatorJS
     EJS_pathtodata = "https://emulatorjs.org";
+
+    // Idioma en español
     EJS_language = "es-ES";
+
+    // Fuerza los controles táctiles en pantalla para jugar sin mando en iPad
+    EJS_VirtualGamepadSettings = [
+      { type: "dpad", location: "left", inputValues: [4, 5, 6, 7] },
+      { type: "button", text: "B", id: "b", location: "right", inputValues: [0] },
+      { type: "button", text: "A", id: "a", location: "right", inputValues: [8] },
+      { type: "button", text: "L", id: "l", location: "left", inputValues: [10] },
+      { type: "button", text: "R", id: "r", location: "right", inputValues: [11] },
+      { type: "button", text: "START", id: "start", location: "center", inputValues: [3] },
+      { type: "button", text: "SELECT", id: "select", location: "center", inputValues: [2] }
+    ];
+
+    // Color principal de la interfaz
+    EJS_color = "#ff66b2";
   </script>
+
+  <!-- Carga el script del emulador -->
   <script src="https://emulatorjs.orgloader.js"></script>
 </body>
 </html>
+
